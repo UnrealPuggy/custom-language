@@ -53,7 +53,7 @@ std::vector<Token> Lexer::tokenize()
             continue;
         }
 
-                switch (c)
+        switch (c)
         {
         case '+':
             tokens.push_back(makeToken(TokenType::Plus, std::string(1, advance())));
