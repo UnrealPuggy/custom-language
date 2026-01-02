@@ -3,6 +3,8 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+
+#include "lexer/token_utils.hpp"
 #include "lexer/lexer.hpp"
 
 std::string readFile(const std::string &filename)
@@ -17,6 +19,10 @@ std::string readFile(const std::string &filename)
     ss << file.rdbuf(); // read whole file
     return ss.str();
 }
+const std::string GREEN = "\033[32m";
+const std::string YELLOW = "\033[33m";
+const std::string CYAN = "\033[36m";
+const std::string RESET = "\033[0m";
 int main(int argC, char *Argsv[])
 {
     int argCount = argC - 1;
@@ -30,7 +36,7 @@ int main(int argC, char *Argsv[])
         std::vector<Token> tokens = lexer.tokenize();
         for (const auto &tok : tokens)
         {
-            std::cout << tok.lexeme << "\n";
+            std::cout << "Type: " + GREEN + tokenTypeToString(tok.type) + RESET + " val: " + CYAN + tok.lexeme + RESET + "\n";
         }
         // for (int i = 0; i < argCount; i++)
         // {
