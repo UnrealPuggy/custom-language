@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ ! -d sandbox ]; then
+    mdkir sandbox
+fi
+cd sandbox
+../bin/main.exe $*
+cd ..
